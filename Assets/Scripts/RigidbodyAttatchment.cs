@@ -8,8 +8,13 @@ public class RigidbodyAttatchment : MonoBehaviour
     public Transform Child;
     public bool IsParent = true;
 
-    private void Update()
+
+
+
+    void ParentSwitch(bool Switch)
     {
+        IsParent = Switch;
+
         if (IsParent == true)
         {
             Child.SetParent(Parent);
@@ -19,10 +24,8 @@ public class RigidbodyAttatchment : MonoBehaviour
             Child.SetParent(null);
         }
     }
-    void ParentSwitch(bool Switch)
-    {
-        IsParent = Switch;
 
-    }
-    
+
+
+
 }

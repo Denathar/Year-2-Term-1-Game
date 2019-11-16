@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Homing : MonoBehaviour
 {
-    public TargetTag targetTag;
-
-
-
     public Transform Target;
 
     public float DegreesPerSec;

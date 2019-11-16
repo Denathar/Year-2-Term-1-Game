@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicTriggerAnim : MonoBehaviour
+public class BoxDrop : MonoBehaviour
 {
-   
-    public Animator animator;
-    bool isOpen;
-
+    public GameObject PickUpCollider;
+    public Collider hit;
     public TargetTag targetTag;
 
 
@@ -15,11 +13,17 @@ public class BasicTriggerAnim : MonoBehaviour
     {
         if (other.gameObject.tag == targetTag.ToString())
         {
-            animator.enabled = true;
+
+        }
+        else
+        {
+            hit = other;
+            PickUpCollider.SendMessage("Drop");
         }
         
     }
 
+  
 
 
 }

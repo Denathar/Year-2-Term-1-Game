@@ -35,14 +35,22 @@ public class PlayerMovmentNew : MonoBehaviour
         PlayerBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * Speed, PlayerBody.velocity.y, 0);
         if (Input.GetButton("Horizontal"))
         {
-            if (Speed < 6f)
+            if (Turning == true)
             {
-                Speed += 0.1f;
+                if (Speed < 6f)
+                {
+                    Speed += 0.1f;
+                }
             }
+            
         }
         else
         {
-            Speed = 2;
+            if (Turning == true)
+            {
+                Speed = 2;
+            }
+            
         }
         if (PlayerBody.velocity.x > -0.5f && PlayerBody.velocity.x < 0.5f)
         {
@@ -56,10 +64,14 @@ public class PlayerMovmentNew : MonoBehaviour
                 PlayerBody.AddForce(0f, JumpForce, 0f);
             }
         }
-        if (Input.GetButtonUp("Jump"))
+        if (PlayerBody.velocity.y > 0)
         {
-            PlayerBody.velocity -= new Vector3(0.0f, PlayerBody.velocity.y, 0.0f);
+            if (Input.GetButtonUp("Jump"))
+            {
+                PlayerBody.velocity -= new Vector3(0.0f, PlayerBody.velocity.y, 0.0f);
+            }
         }
+        
         if (Turning == true)
         {
             if (PlayerBody.velocity.x < -1)
@@ -84,13 +96,13 @@ public class PlayerMovmentNew : MonoBehaviour
                 {
                     if (MovePosition == 0f)
                     {
-                        MovePosition = -2f;
+                        MovePosition = 2f;
                         
                     }
                 }
                 if (Is0 == false)
                 {
-                    if (MovePosition == -2f)
+                    if (MovePosition == 2f)
                     {
                         MovePosition = 0f;
                         
@@ -108,12 +120,29 @@ public class PlayerMovmentNew : MonoBehaviour
 
     void ZmoveSwitch(bool Switch)
     {
-        Zmove = Switch;
+        if (Turning == true)
+        {
+            Zmove = Switch;
+        }
+            
     }
     void JumpSwitch(bool SwitchJ)
     {
-        JumpOn = SwitchJ;
+        if (Turning == true)
+        {
+            JumpOn = SwitchJ;
+        }
+        
 
     }
 
+    void turningSwitch(bool SwitchT)
+    {
+        Turning = SwitchT;
+        Zmove = SwitchT;
+    }
+    void SpeedChange(float Speedin)
+    {
+        Speed = Speedin;
+    }
 }
