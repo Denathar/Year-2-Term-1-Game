@@ -8,6 +8,7 @@ TagManager:
   - HeavyBox
   - TriggerCollider
   - SpecialBox
+  - LevelMesh
   layers:
   - Default
   - TransparentFX

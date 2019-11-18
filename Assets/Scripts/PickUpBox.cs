@@ -7,6 +7,7 @@ public class PickUpBox : MonoBehaviour
     public Rigidbody PlayerRB;
     public Transform Target;
     public Collider PickupColl;
+    
 
     public Transform HoldPos;
     public TargetTag targetTag;
@@ -52,13 +53,18 @@ public class PickUpBox : MonoBehaviour
         {
             if (drop == false)
             {
+                
+
                 if (Input.GetKey("e"))
                 {
                     PlayerRB.mass = 1.25f;
 
                     Target = other.transform;
 
-                    Target.gameObject.SendMessage("ParentSwitch", false);
+                    if (Target != null)
+                    {
+                        Target.gameObject.SendMessage("ParentSwitch", false);
+                    }
 
                     PickupColl.enabled = false;
 
@@ -74,11 +80,12 @@ public class PickUpBox : MonoBehaviour
         {
             Target.gameObject.SendMessage("ParentSwitch", true);
             Target = null;
-            PickupColl.enabled = true;
+            
 
             PlayerRB.mass = 1;
             
             drop = true;
+            PickupColl.enabled = true;
         }    
     }
     void DropSwitch(bool DSwitch)

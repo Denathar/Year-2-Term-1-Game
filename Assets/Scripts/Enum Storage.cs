@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EventTypes { OnDestroyEvent, OnJumpEvent, OnFowardEvent }
 
-public enum TargetTag { Nothing, Player, Enemy, Wall, Parent, Child, Floor, Box, HeavyBox, TriggerCollider, SpecialBox,}
+public enum TargetTag { Nothing, Player, Enemy, Parent, Child, Box, HeavyBox, TriggerCollider, SpecialBox, LevelMesh,}
 
 public class EnumStorage : MonoBehaviour
 {

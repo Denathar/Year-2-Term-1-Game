@@ -21,6 +21,8 @@ public class PlayerMovmentNew : MonoBehaviour
     private bool Is0 = true;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {

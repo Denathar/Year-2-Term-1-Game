@@ -8,7 +8,7 @@ public class RigidbodyAttatchment : MonoBehaviour
     public Transform Child;
     public bool IsParent = true;
 
-
+    public Collider DropColl;
 
 
     void ParentSwitch(bool Switch)
@@ -22,6 +22,7 @@ public class RigidbodyAttatchment : MonoBehaviour
         else
         {
             Child.SetParent(null);
+            DropColl.enabled = true;
         }
     }
 
