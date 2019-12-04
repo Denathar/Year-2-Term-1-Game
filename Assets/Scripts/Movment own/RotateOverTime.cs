@@ -20,15 +20,15 @@ public class RotateOverTime : MonoBehaviour
     {
         if (X == true)
         {
-            XAngle = XAngle + Speed;
+            XAngle = XAngle + Speed * Time.deltaTime;
         }
         if (Y == true)
         {
-           yAngle = yAngle + Speed;
+           yAngle = yAngle + Speed * Time.deltaTime;
         }
         if (Z == true)
         {
-            zAngle = zAngle + Speed;
+            zAngle = zAngle + Speed * Time.deltaTime;
         }
 
         transform.eulerAngles = new Vector3(XAngle, yAngle, zAngle);

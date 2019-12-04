@@ -147,4 +147,13 @@ public class PlayerMovmentNew : MonoBehaviour
     {
         Speed = Speedin;
     }
+
+    public void JumpUi()
+    {
+        if (JumpOn == true)
+        {
+            PlayerBody.AddForce(0f, JumpForce, 0f);
+        }
+    }
+
 }

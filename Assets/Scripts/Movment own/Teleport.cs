@@ -12,6 +12,7 @@ public class Teleport : MonoBehaviour
         if (other.gameObject.tag == targetTag.ToString())
         {
             other.gameObject.transform.position = Target.position;
+            
         }
         
     }

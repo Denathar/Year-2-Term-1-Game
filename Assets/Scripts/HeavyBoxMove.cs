@@ -45,10 +45,7 @@ public class HeavyBoxMove : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
+
 
     void OnTriggerStay(Collider other)
     {
@@ -71,4 +68,5 @@ public class HeavyBoxMove : MonoBehaviour
 
         }
     }
+
 }
