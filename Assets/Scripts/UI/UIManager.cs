@@ -8,19 +8,30 @@ public class UIManager : MonoBehaviour
     public static bool IsPaused;
 
     public GameObject StartScreen;
+<<<<<<< HEAD
     public GameObject StartCamera;
+=======
+>>>>>>> master
     public GameObject PauseScreen;
     public GameObject DeathScreen;
     public GameObject VictoryScreen;
     public GameObject PlayerGui;
+<<<<<<< HEAD
     public GameObject Player;
     public GameObject PlayerCamera;
     
+=======
+
+    public GameObject Player;
+    public GameObject PlayerCamera;
+    public GameObject StartCamera;
+>>>>>>> master
 
     bool PauseOn = false;
 
     private void Start()
     {
+<<<<<<< HEAD
         if (StartScreen != null)
         {
             StartScreen.SetActive(true);
@@ -29,14 +40,24 @@ public class UIManager : MonoBehaviour
         {
             StartCamera.SetActive(true);
         }
+=======
+        StartScreen.SetActive(true);
+        StartCamera.SetActive(true);
+
+>>>>>>> master
         if (PauseScreen != null)
         {
             PauseScreen.SetActive(false);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         if (DeathScreen != null)
         {
             DeathScreen.SetActive(false);
         }
+<<<<<<< HEAD
         if (VictoryScreen != null)
         {
             VictoryScreen.SetActive(false);
@@ -69,6 +90,13 @@ public class UIManager : MonoBehaviour
                 PlayerGui.SetActive(true);
             }
         }
+=======
+        VictoryScreen.SetActive(false);
+        PlayerGui.SetActive(false);
+        PlayerCamera.SetActive(false);
+        Player.SetActive(false);
+
+>>>>>>> master
     }
 
     private void Update()
@@ -77,6 +105,10 @@ public class UIManager : MonoBehaviour
         {
             PauseOn = !PauseOn;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         if (PauseOn == true)
         {
             PauseActive();
@@ -85,6 +117,7 @@ public class UIManager : MonoBehaviour
         {
             PauseInActive();
         }
+<<<<<<< HEAD
         if (StartScreen != null)
         {
             if (StartScreen.activeSelf == true)
@@ -112,11 +145,31 @@ public class UIManager : MonoBehaviour
                 
             }
         }
+=======
+
+        if (StartScreen.activeSelf == true)
+        {
+            PauseScreen.SetActive(false);
+            PauseOn = false;
+        }
+
+        if (Player.activeSelf == false)
+        {
+            if (StartScreen.activeSelf == false)
+            {
+                PlayerGui.SetActive(false);
+                DeathScreen.SetActive(true);
+            }
+            
+        }
+
+>>>>>>> master
     }
 
     public void OnStartPressed()
     {
         //Enter code here to start the game
+<<<<<<< HEAD
         SceneManager.LoadScene("Level !");
         //Debug.Log("START GAME");
 
@@ -128,10 +181,28 @@ public class UIManager : MonoBehaviour
 
         
     }
+=======
+
+        Debug.Log("START GAME");
+
+        Player.SetActive(true);
+        PlayerCamera.SetActive(true);
+        PlayerGui.SetActive(true);
+        StartCamera.SetActive(false);
+        StartScreen.SetActive(false);
+
+        
+    }
+
+>>>>>>> master
     public void OnPressed()
     {
         Debug.Log("pressed");
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     public void PauseUI()
     {
         PauseOn = true;
@@ -148,6 +219,7 @@ public class UIManager : MonoBehaviour
     public void PauseInActive()
     {
         PauseOn = false;
+<<<<<<< HEAD
         if (PauseScreen != null)
         {
             PauseScreen.SetActive(false);
@@ -166,14 +238,37 @@ public class UIManager : MonoBehaviour
         }
         
     }
+=======
+        PauseScreen.SetActive(false);
+        Time.timeScale = 1F;
+        Player.GetComponent<PlayerMovmentNew>().enabled = true;
+        if (StartScreen.activeSelf == false)
+        {
+            PlayerGui.SetActive(true);
+        }
+        //Debug.Log("Pause off");
+        
+
+    }
+
+>>>>>>> master
     public void Quit()
     {
         Application.Quit();
         Debug.Log("Quit");
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     public void Restart()
     {
         SceneManager.LoadScene("Level !");
 
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
 }
