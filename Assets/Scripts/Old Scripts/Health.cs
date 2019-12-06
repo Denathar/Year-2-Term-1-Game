@@ -109,7 +109,10 @@ public class Health : MonoBehaviour
         HealthDegradeTimer = 0;
 
 
-
+        if (currentHealth == 0)
+        {
+            Die();
+        }
         if (currentHealth <= 0)
         {
             Die();

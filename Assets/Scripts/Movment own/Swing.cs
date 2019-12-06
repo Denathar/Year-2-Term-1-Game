@@ -13,21 +13,21 @@ public class Swing : MonoBehaviour
     void FixedUpdate()
     {
 
-        current = current + Speed;
+        
 
 
-        if (current == angle)
+        if (current >= angle)
         { 
             Speed = -Speed;
         }
 
-        if (current == -angle)
+        if (current <= -angle)
         {
             Speed = -Speed;
         }
 
         transform.eulerAngles = new Vector3(0, 0, current);
 
-
+        current = current + Speed * Time.deltaTime;
     }
 }
