@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bulb
-    second: {fileID: 2100000, guid: 0ea5788564945be47bd9dbe276153e7d, type: 2}
+    second: {fileID: 2100000, guid: 198a3e1668f0ad642b1f94ac80b0a13c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: c0ad3ca458949f843abefb3d0702a3cf, type: 2}
+    second: {fileID: 2100000, guid: 769bda52b60a16146b2636e398f38ef2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
