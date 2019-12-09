@@ -13,6 +13,9 @@ public class PickUpBox : MonoBehaviour
     public TargetTag targetTag;
     public TargetTag targetTag2;
 
+    public bool pickedUp = false;
+
+    public bool UIPickUpBox = false;
 
     public bool drop = false;
 
@@ -21,24 +24,33 @@ public class PickUpBox : MonoBehaviour
         if (Target != null)
         {
             Target.position = HoldPos.position;
-            if (drop == false)
+            if (UIPickUpBox == false)
             {
-                if (Input.GetKey("e"))
+                
+                if (drop == false)
                 {
-                    Target.SetParent(transform);
+                    if (Input.GetKeyDown("e"))
+                    {
+                        Target.SetParent(transform);
+                        pickedUp = !pickedUp;
+                        
+                    }
+                    if (pickedUp == false)
+                    {
 
-
-                }
-                else
-                {
-                    Target.gameObject.SendMessage("ParentSwitch", true);
-                    PickupColl.enabled = true;
-
-                    Target = null;
-                    PlayerRB.mass = 1;
+                        Target.gameObject.SendMessage("ParentSwitch", true);
+                        PickupColl.enabled = true;
+                        Target = null;
+                        PlayerRB.mass = 1;
+                    }
                 }
             }
             
+            if (UIPickUpBox == true)
+            {
+                Target.SetParent(transform);
+                
+            }
            
         }
 
@@ -53,13 +65,11 @@ public class PickUpBox : MonoBehaviour
         {
             if (drop == false)
             {
-                
-
-                if (Input.GetKey("e"))
+                if (Input.GetKeyDown("e"))
                 {
-                    PlayerRB.mass = 1.25f;
-
+                    PlayerRB.mass = 1.5f;
                     Target = other.transform;
+
 
                     if (Target != null)
                     {
@@ -69,12 +79,17 @@ public class PickUpBox : MonoBehaviour
                     PickupColl.enabled = false;
 
                 }
+                if (UIPickUpBox == true)
+                {
+                    Target = other.transform;
+                }
             }
             
 
         }
     }
-    void Drop()
+ 
+    public void Drop()
     {
         if (Target != null)
         {
@@ -92,4 +107,14 @@ public class PickUpBox : MonoBehaviour
     {
         drop = DSwitch;
     }
+
+    public void UiPickUpBox()
+    {
+        if (Target != null)
+        {
+            UIPickUpBox = !UIPickUpBox;
+        }
+        
+    }
+
 }

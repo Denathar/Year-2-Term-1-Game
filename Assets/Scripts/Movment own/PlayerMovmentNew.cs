@@ -13,12 +13,18 @@ public class PlayerMovmentNew : MonoBehaviour
 
     public bool JumpOn = true;
     public bool Turning = true;
+    public bool UiMove = false;
 
     public bool Zmove = false;
     public float MovePosition = 0;
     public float smoothTime = 0.3F;
     private Vector3 velocity = Vector3.zero;
-    private bool Is0 = true;
+
+
+    private bool Is0 = false;
+
+    bool UileftMove = false;
+    bool UiRightMove = false; 
 
 
 
@@ -33,9 +39,19 @@ public class PlayerMovmentNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        PlayerBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * Speed, PlayerBody.velocity.y, 0);
-        if (Input.GetButton("Horizontal"))
+        if (UiMove == false)
+        {
+            PlayerBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * Speed, PlayerBody.velocity.y, 0);
+        }
+        if (UileftMove == true)
+        {
+            PlayerBody.velocity = new Vector3(-1f * Speed, PlayerBody.velocity.y, 0);
+        }
+        if (UiRightMove == true)
+        {
+            PlayerBody.velocity = new Vector3(1f * Speed, PlayerBody.velocity.y, 0);
+        }
+        if (PlayerBody.velocity.x < -0.5f || PlayerBody.velocity.x > 0.5f)
         {
             if (Turning == true)
             {
@@ -44,7 +60,6 @@ public class PlayerMovmentNew : MonoBehaviour
                     Speed += 0.1f;
                 }
             }
-            
         }
         else
         {
@@ -52,7 +67,6 @@ public class PlayerMovmentNew : MonoBehaviour
             {
                 Speed = 2;
             }
-            
         }
         if (PlayerBody.velocity.x > -0.5f && PlayerBody.velocity.x < 0.5f)
         {
@@ -92,29 +106,26 @@ public class PlayerMovmentNew : MonoBehaviour
         {
             if (Input.GetKeyDown("w"))
             {
-                
-
-                if (Is0 == true)
-                {
-                    if (MovePosition == 0f)
-                    {
-                        MovePosition = 2f;
-                        
-                    }
-                }
-                if (Is0 == false)
-                {
-                    if (MovePosition == 2f)
-                    {
-                        MovePosition = 0f;
-                        
-                    }
-                }
-
-                Is0 = !Is0;
-
+                Is0 = true;
             }
-
+            if (Input.GetKeyDown("s"))
+            {
+                Is0 = false;
+            }
+            if (Is0 == true)
+            {
+                if (MovePosition == 0f)
+                {
+                    MovePosition = 2f;
+                }
+            }
+            if (Is0 == false)
+            {
+                if (MovePosition == 2f)
+                {
+                    MovePosition = 0f;
+                }
+            }
         }
         
 
@@ -155,5 +166,36 @@ public class PlayerMovmentNew : MonoBehaviour
             PlayerBody.AddForce(0f, JumpForce, 0f);
         }
     }
-
+    public void MoveLeftUp()
+    {
+        UileftMove = false;
+        Debug.Log("release");
+        UiMove = false;
+    }
+    public void MoveLeftDown()
+    {
+        UileftMove = true;
+        Debug.Log("Clicked");
+        UiMove = true;
+    }
+    public void MoveRightUp()
+    {
+        UiRightMove = false;
+        Debug.Log("release");
+        UiMove = false;
+    }
+    public void MoveRightDown()
+    {
+        UiRightMove = true;
+        Debug.Log("Clicked");
+        UiMove = true; 
+    }
+    public void ZmoveFowardsUi()
+    {
+        Is0 = true;
+    }
+    public void ZmoveBackUi()
+    {
+        Is0 = false;
+    }
 }

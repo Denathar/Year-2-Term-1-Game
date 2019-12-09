@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
@@ -81,9 +81,15 @@ public class UIManager : MonoBehaviour
         {
             PauseActive();
         }
-        if (PauseOn == false)
+        if (VictoryScreen != null)
         {
-            PauseInActive();
+            if (VictoryScreen.activeSelf == false)
+            {
+                if (PauseOn == false)
+                {
+                    PauseInActive();
+                }
+            }
         }
         if (StartScreen != null)
         {
@@ -105,6 +111,14 @@ public class UIManager : MonoBehaviour
                 DeathScreen.SetActive(true); 
             }
         }
+        if (VictoryScreen != null)
+        {
+            if (VictoryScreen.activeSelf == true)
+            {
+                PlayerGui.SetActive(false);
+            }
+        }
+
     }
 
     public void OnStartPressed()
@@ -150,14 +164,11 @@ public class UIManager : MonoBehaviour
         {
             Player.GetComponent<PlayerMovmentNew>().enabled = true;
         }
-        if (StartScreen != null)
+        if (PlayerGui != null)
         {
-            if (StartScreen.activeSelf == false)
-            {
-                PlayerGui.SetActive(true);
-            }
+            PlayerGui.SetActive(true);
         }
-        
+
     }
     public void Quit()
     {
