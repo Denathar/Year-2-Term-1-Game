@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         ResetScore();
+        //Score = 100;
     }
 
     // Update is called once per frame

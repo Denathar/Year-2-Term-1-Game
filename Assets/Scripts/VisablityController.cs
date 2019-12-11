@@ -6,6 +6,7 @@ public class VisablityController : MonoBehaviour
 {
     public MeshRenderer[] Objects;
     public TargetTag targetTag;
+    
 
     private void Start()
     {
